@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   get '/members', to: 'members#index'
   
   get 'libraries', to: 'libraries#index'
+  get 'libraries/:id', to: 'libraries#show'
 end
