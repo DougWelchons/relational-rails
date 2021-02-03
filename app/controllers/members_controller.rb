@@ -40,6 +40,11 @@ class MembersController < ApplicationController
       redirect_to "/members/#{member.id}"
   end
 
+  def destroy
+    Member.destroy(params[:id])
+    redirect_to "/members"
+  end
+
   def status_check(info)
     if info == nil
       false

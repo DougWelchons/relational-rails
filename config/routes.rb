@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   post '/members', to: 'members#create'
   get '/members/:id/edit', to: 'members#edit'
   patch 'members/:id', to: 'members#update'
+  get '/members/:id/destroy', to: 'members#destroy'
 end
