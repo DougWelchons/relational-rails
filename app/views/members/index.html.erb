@@ -3,5 +3,5 @@
 <a href='/members/new'> New member sign-up</a>
 
 <% @members.each do |member| %>
-  <h2><%= member.name %></h2>
+  <h2><a href="/members/<%=member.id%>"><%= member.name %></a></h2>
 <% end %>
