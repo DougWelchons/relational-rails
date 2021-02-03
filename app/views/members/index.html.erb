@@ -1,5 +1,7 @@
 <h1> Members List </h1>
 
+<a href='/members/new'> New member sign-up</a>
+
 <% @members.each do |member| %>
-  <h6><%= member.name %></h6>
+  <h2><%= member.name %></h2>
 <% end %>

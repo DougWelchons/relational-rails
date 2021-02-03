@@ -12,7 +12,7 @@ RSpec.describe 'as a visitor' do
       expect(page).to have_content(member1.skill_level)
       expect(page).to have_content(member1.created_at)
       expect(page).to have_content(member1.updated_at)
-      save_and_open_page
+      # save_and_open_page
     end
   end
 end
