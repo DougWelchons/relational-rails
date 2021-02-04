@@ -1,0 +1,3 @@
+<h1> Edit Library </h1>
+
+<%= render partial: 'form', locals: { method: :patch, url: "/libraries/#{@library.id}", class: 'libraries_form', submit: "Update Library", local: true}%>

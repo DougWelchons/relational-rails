@@ -1,0 +1,9 @@
+<%= form_tag(url , method: method, class: 'libraries_form', local: true) do %>
+  <%= label_tag :name %>
+  <%= text_field_tag :name %>
+  <br>
+  <%= label_tag :city %>
+  <%= text_field_tag :city %>
+<%= submit_tag submit %>
+<% end %>
+

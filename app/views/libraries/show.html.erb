@@ -1,3 +1,5 @@
 <h1><%= @library.name %></h1>
 
 <h2>located in <%= @library.city %></h2>
+
+<h3><%= link_to "Update Library", "/libraries/#{@library.id}/edit" %></h3>
