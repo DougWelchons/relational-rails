@@ -1,0 +1,7 @@
+<h1> All Libraries </h1>
+
+<% @libraries.each do |library| %>
+  <%= library.name %>
+<% end %>
+
+<h3><%= link_to "New Library", '/libraries/new' %></h3>
