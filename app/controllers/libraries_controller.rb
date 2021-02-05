@@ -26,12 +26,16 @@ class LibrariesController < ApplicationController
   end
 
   def update
-    require 'pry'; binding.pry
     @library = Library.find(params[:id])
     @library = Library.update({name: params[:name],
-                              city: params[:city]
-                              })
+                               city: params[:city]
+                               })
+      
+    redirect_to "/libraries/#{params[:id]}"
+  end
 
-    redirect_to 
+  def delete
+    Library.destroy(params[:id])
+    redirect_to "/libraries"
   end
 end

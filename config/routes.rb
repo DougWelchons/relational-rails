@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get '/libraries', to: 'libraries#index'
   get '/libraries/:id', to: 'libraries#show'
   patch '/libraries/:id', to: 'libraries#update'
+  delete '/libraries/:id', to: 'libraries#delete'
   get '/libraries/:id/edit', to: 'libraries#edit'
 
 end

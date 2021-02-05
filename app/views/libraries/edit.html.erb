@@ -1,3 +1,11 @@
 <h1> Edit Library </h1>
+<%# <% binding.pry %> %>
+<%# <%= render partial: 'form', locals: { method: :patch, url: "/libraries/#{@library.id}", class: 'libraries_form', submit: "Update Library", local: true}%> 
 
-<%= render partial: 'form', locals: { method: :patch, url: "/libraries/#{@library.id}", class: 'libraries_form', submit: "Update Library", local: true}%>
+<%= form_tag "/libraries/#{@library.id}", method: :patch do%>
+  <%= label_tag :name %>
+  <%= text_field_tag :name %>
+  <%= label_tag :city %>
+  <%= text_field_tag :city %>
+<%= submit_tag 'Update Library' %>
+<% end %>
