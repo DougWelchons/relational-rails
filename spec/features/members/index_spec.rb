@@ -9,6 +9,9 @@ RSpec.describe "as a visitor" do
 
       expect(page).to have_content(member1.name)
       expect(page).to have_content(member2.name)
+
+      visit "/members/new"
+      save_and_open_page
     end
   end
 end
