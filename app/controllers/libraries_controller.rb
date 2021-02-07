@@ -40,7 +40,7 @@ class LibrariesController < ApplicationController
     redirect_to "/libraries/#{params[:id]}"
   end
 
-  def delete
+  def destroy
     Library.destroy(params[:id])
     redirect_to "/libraries"
   end

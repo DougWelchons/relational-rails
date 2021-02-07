@@ -13,10 +13,31 @@ RSpec.describe "Books Show Page" do
   describe "a visitor" do
     it "shows the book and its attributes" do
       visit "/books/#{@cat.id}"
-
+      
       expect(page).to have_content(@cat.name)
       expect(page).to have_content(@cat.pages)
       expect(page).to have_content(@cat.available)
     end
+    
+    it "has a link to delete the book" do
+      visit "/books/#{@cat.id}"
+      
+      expect(page).to have_link("Delete Book")
+    end
+    
+    describe "when I click delete the link" do
+      it "deletes the book and returns to books index page" do
+        visit "/books/#{@cat.id}"
+
+        click_on "Delete Book"
+
+        expect(current_path).to eq("/books")
+
+        expect(page).to have_no_content(@cat.name)
+      end
+    end
   end
 end
+# Then a 'DELETE' request is sent to '/child_table_name/:id',
+# the child is deleted
+# and I am redirected to the child index page where I no longer see this child
