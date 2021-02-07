@@ -1,0 +1,11 @@
+<form action="/members/<%=@member.id%>" method="post">
+  <input type="hidden" name="authenticity_token" value="<$= form_authenticity_token %>"/>
+  <input type="hidden" name="_method" value="PATCH" />
+  <p> Name </p>
+  <input type="text" name="member[name]" value="<%= @member.name %>"/>
+  <p> skill_level </p>
+  <input type="integer" name="member[skill_level]" value="<%= @member.skill_level %>"/>
+  <p> Premium membership?
+  <input type="checkbox" name="member[premium_member]" <%= 'checked'if @member.premium_member == true %>/></p>
+  <input type="submit"/>
+</form>

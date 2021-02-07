@@ -1,0 +1,7 @@
+<h2><%= @member.name %></h2>
+<h4> Member ID = <%= @member.id %></h4>
+<h4> Premium member = <%= @member.premium_member %></h4>
+<h4> Skill level = <%= @member.skill_level %></h4>
+<h4> Created at = <%= @member.created_at %></h4>
+<h4> Updated at = <%= @member.updated_at %></h4>
+<h4><a href="/members/<%=@member.id%>/edit">Edit member info</a> | <a href="/members/<%=@member.id%>/destroy">Delete member</a> | <a href="/members">Home</a></h4>
