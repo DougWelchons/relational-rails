@@ -1,7 +1,13 @@
 <h1> All Libraries </h1>
 
-<% @libraries.each do |library| %>
-  <%= library.name %>
-<% end %>
+<ul>
+  <section id = "ordered-libraries" >
+    <p><% @libraries.each do |library| %>
+      <li><%= library.name %>
+      Created: <%= library.created_at.strftime("%A, %B %-d, %Y") %></li>
+      <% end %>
+    </p>
+  </section>
+</ul>
 
 <h3><%= link_to "New Library", '/libraries/new' %></h3>

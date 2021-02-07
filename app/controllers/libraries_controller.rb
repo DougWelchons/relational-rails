@@ -2,7 +2,7 @@ class LibrariesController < ApplicationController
   before_action :set_library, only: [:show, :edit, :update, :index_books]
 
   def index
-    @libraries = Library.all
+    @libraries = Library.recent_libraries
   end
 
   def show
