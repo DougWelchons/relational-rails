@@ -2,3 +2,5 @@
 
 <h4>Available: <%= @book.available %></h4>
 <p>Pages: <%= @book.pages %></p>
+
+<%= link_to "Update Book", "/books/#{@book.id}/edit" %>
