@@ -8,6 +8,8 @@ RSpec.describe "as a visitor" do
 
         fill_in :name, :with => "Lafayette Library"
         fill_in :city, :with => "Lafayette"
+        fill_in :years_open, :with => "20"
+        check(:open)
 
         click_on "Create Library"
 

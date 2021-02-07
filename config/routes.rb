@@ -9,5 +9,7 @@ Rails.application.routes.draw do
   patch '/libraries/:id', to: 'libraries#update'
   delete '/libraries/:id', to: 'libraries#delete'
   get '/libraries/:id/edit', to: 'libraries#edit'
+  get '/libraries/:id/books', to: 'libraries#index_books'
 
+  get '/books', to: 'books#index'
 end

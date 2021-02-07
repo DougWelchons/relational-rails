@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "as a visitor" do
   before(:each) do
-    @library1 = Library.create!(name: "Lafayette Library", city: "Lafayette")
+    @library1 = Library.create!(name: "Lafayette Library", city: "Lafayette", years_open: 20, open: true)
   end
   describe "library show page" do
     it "shows the library and its information" do
@@ -10,6 +10,8 @@ RSpec.describe "as a visitor" do
 
       expect(page).to have_content(@library1.name)
       expect(page).to have_content(@library1.city)
+      expect(page).to have_content(@library1.years_open)
+      expect(page).to have_content(@library1.open)
     end
 
     it "has a link to update library that takes me to the edit page" do
@@ -34,12 +36,11 @@ RSpec.describe "as a visitor" do
       library2 = Library.create!(name: "Broomfield Library", city: "Broomfield")
 
       visit "libraries/#{@library1.id}"
-      save_and_open_page
+    
       click_on "Delete Library"
 
       expect(page).to have_no_content(@library1.name)
       expect(page).to have_content(library2.name)
-      save_and_open_page
     end
   end
 end

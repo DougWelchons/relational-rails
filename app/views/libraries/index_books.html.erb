@@ -1,0 +1,9 @@
+<h1><%= @library.name%>'s Books:</h1>
+
+<% @library.books.each do |book| %>
+  <section id="book-<%= book.id %>">
+    <h2><%= book.name %></h2>
+    <p>Number of Pages: <%= book.pages %></p>
+    <p>Available: <%= book.available %></p>
+  </section>
+<% end %>
