@@ -12,4 +12,5 @@ Rails.application.routes.draw do
   get '/libraries/:id/books', to: 'libraries#index_books'
 
   get '/books', to: 'books#index'
+  get '/books/:id', to: 'books#show'
 end
