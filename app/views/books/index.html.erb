@@ -9,6 +9,8 @@
     </section>
   <% end %>
 
+  <%= link_to "Create Book", "/libraries/#{@library.id}/books/new" %>
+
 <% else %>
   <h1>All Books:</h1>
   <% @books.each do |book| %>
