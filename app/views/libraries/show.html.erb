@@ -3,6 +3,8 @@
 <h2>Located In: <%= @library.city %></h2>
 <h2>Currenly Open: <%= @library.open %></h2>
 <h2>Years Open: <%= @library.years_open %></h2>
+<%# instance method or books.count %>
+<h2><%= @library.name %> has <%= @library.number_of_books %> books</h2>
 
 <h3><%= link_to "Update Library", "/libraries/#{@library.id}/edit" %></h3>
 

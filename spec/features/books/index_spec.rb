@@ -36,13 +36,19 @@ RSpec.describe "Books Index Page" do
       end
         
         
-      within("#book-#{@war.id}") do
-        expect(page).to have_content(@war.name)
-        expect(page).to have_content(@war.available)
-        expect(page).to have_content(@war.pages)
-        expect(page).to have_content(@war.library.name)
-      end
+      # within("#book-#{@war.id}") do
+      #   expect(page).to have_content(@war.name)
+      #   expect(page).to have_content(@war.available)
+      #   expect(page).to have_content(@war.pages)
+      #   expect(page).to have_content(@war.library.name)
+      # end
+    end
+    
+    it "only shows records where the boolean column is `true`" do
+      visit "/libraries/#{@library2.id}/books"
 
+      expect(page).to have_content(@xmas.name)
+      expect(page).to have_no_content(@war.name)
     end
   end
 end

@@ -2,7 +2,12 @@ class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update]
 
   def index
-    @books = Book.all
+    if params[:id]
+      @library = Library.find(params[:id])
+      @books = @library.books.available_books
+    else
+      @books = Book.available_books
+    end
   end
 
   def show

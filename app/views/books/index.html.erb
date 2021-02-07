@@ -1,10 +1,22 @@
-<h1>All Books:</h1>
+<% if @library %>
 
-<% @books.each do |book| %>
-  <section id="book-<%=book.id%>">
-    <h3> <%= book.name %> At <%= book.library.name %></h3>
-    <p> Number of pages: <%= book.pages %> </p>
-    <p> Available: <%= book.available %></p>
-  </section>
+  <h1><%= @library.name %>'s Books:</h1>
+  <% @books.each do |book| %>
+    <section id="book-<%=book.id%>">
+      <h3> <%= book.name %> </h3>
+      <p> Number of pages: <%= book.pages %> </p>
+      <p> Available: <%= book.available %></p>
+    </section>
+  <% end %>
+
+<% else %>
+  <h1>All Books:</h1>
+  <% @books.each do |book| %>
+    <section id="book-<%=book.id%>">
+      <h3> <%= book.name %> At <%= book.library.name %></h3>
+      <p> Number of pages: <%= book.pages %> </p>
+      <p> Available: <%= book.available %></p>
+    </section>
+  <% end %>
+
 <% end %>
-
