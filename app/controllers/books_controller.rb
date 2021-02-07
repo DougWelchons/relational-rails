@@ -12,6 +12,18 @@ class BooksController < ApplicationController
   def edit
     @book
   end
+
+  def new
+    @library = Library.find(params[:id])
+  end
+
+  def create
+    @library = Library.find(params[:id])
+
+    @library.books.create!(book_params)
+
+    redirect_to "/libraries/#{@library.id}/books"
+  end
   
   def update
     @book = Book.update(book_params)

@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   get '/libraries/:id/edit', to: 'libraries#edit'
   get '/libraries/:id/books', to: 'libraries#index_books'
 
+  get '/libraries/:id/books/new', to: 'books#new'
+  post '/libraries/:id/books', to: 'books#create'
+
   get '/books', to: 'books#index'
   get '/books/:id', to: 'books#show'
   get '/books/:id/edit', to: 'books#edit'

@@ -7,3 +7,5 @@
     <p>Available: <%= book.available %></p>
   </section>
 <% end %>
+
+<%= link_to "Create Book", "/libraries/#{@library.id}/books/new" %>
