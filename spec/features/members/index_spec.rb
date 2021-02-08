@@ -1,4 +1,6 @@
 require 'rails_helper'
+
+# user story 1
 RSpec.describe "as a visitor" do
   describe "when i visit members/index" do
     it "shows each member in the system" do

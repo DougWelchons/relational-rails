@@ -1,5 +1,6 @@
 require 'rails_helper'
 
+# user story 3
 RSpec.describe 'As a visiter' do
   describe "when i visit the member index page" do
     it 'shows a link to add a new member' do
