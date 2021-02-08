@@ -1,0 +1,16 @@
+<h1> <%=@member.name%>'s Off-road Vehicles list </h1>
+<a id="add new vehicle" href="/members/<%= @member.id%>/new_orv"> Add a new vehicle </a>
+
+<form action="/members/<%= @member.id%>/offroad_vehicles" method="get">
+  <input type="hidden" name="authenticity_token" value="<$= form_authenticity_token %>"/>
+  <input id="select_tire_size" type="intiger" name="select_tire_size"/>
+  <input type="submit" value="Only return records with more than"/>
+</form>
+
+<% @orv.each do |vehicle| %>
+  <h2><a href="/offroad_vehicles/<%=vehicle.id%>"><%= vehicle.name %></a></h2>
+  <h3><%= vehicle.make%>, <%= vehicle.model%></h3>
+  <h3>Member ID#<%= vehicle.member_id%></h3>
+  <h3>Tire size <%= vehicle.tire_size%> inches</h3>
+  <h3> Passed safety inspection <%= vehicle.passed_safety_inspection %></h3>
+<% end %>

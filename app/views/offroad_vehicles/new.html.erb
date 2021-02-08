@@ -1,0 +1,15 @@
+<form action="/offroad_vehicles" method="post">
+  <input type="hidden" name="authenticity_token" value="<$= form_authenticity_token %>"/>
+  <input type="hidden" name="member_id" value="<%= params[:id]%>"/>
+  <p> Name </p>
+  <input type="text" name="offroad_vehicles[name]"/>
+  <p>Make</p>
+  <input type="text" name="offroad_vehicles[make]"/>
+  <p>Model</p>
+  <input type="text" name="offroad_vehicles[model]"/>
+  <p>Tire Size</p>
+  <input type="intiger" name="offroad_vehicles[tire_size]"/>
+  <p> Passed safety inspection
+  <input type="checkbox" name="offroad_vehicles[passed_safety_inspection]"/></p>
+  <input id="create_orv" type="submit"/>
+</form>

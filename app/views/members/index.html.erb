@@ -4,4 +4,5 @@
 
 <% @members.each do |member| %>
   <h2><a href="/members/<%=member.id%>"><%= member.name %></a></h2>
+  <p> created at:<%= member.created_at %></p>
 <% end %>
