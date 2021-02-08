@@ -7,6 +7,12 @@
       <p> Number of pages: <%= book.pages %> </p>
       <p> Available: <%= book.available %></p>
     </section>
+<section id="search">
+  <h3>Search for books by number of pages</h3>
+  <%= form_with url: "/libraries/#{@library.id}/books", method: :get, local: :true %>
+    <%= submit_tag("Only return books with a number of pages greater than")%>
+    <%= text_field_tag(:search, params[:search]) %>
+</section>
   <% end %>
 
   <%= link_to "Create Book", "/libraries/#{@library.id}/books/new" %>
@@ -19,6 +25,12 @@
       <p> Number of pages: <%= book.pages %> </p>
       <p> Available: <%= book.available %></p>
     </section>
+<section id="search">
+  <h3>Search for books by number of pages</h3>
+  <%= form_with url: "/books", method: :get, local: :true %>
+    <%= submit_tag("Only return books with a number of pages greater than")%>
+    <%= text_field_tag(:search, params[:search]) %>
+</section>
   <% end %>
 
 <% end %>

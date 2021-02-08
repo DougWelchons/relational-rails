@@ -4,7 +4,9 @@ class BooksController < ApplicationController
   def index
     if params[:id]
       @library = Library.find(params[:id])
-      @books = @library.books.available_books
+      @books = @library.books.search(params[:search])
+    elsif params[:seach]
+      @books = Book.search(params[:seach])
     else
       @books = Book.available_books
     end
@@ -46,6 +48,6 @@ class BooksController < ApplicationController
   end
 
   def book_params
-    params.permit(:name, :pages, :available)
+    params.permit(:name, :pages, :available, :search)
   end
 end

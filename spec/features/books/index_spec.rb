@@ -46,9 +46,30 @@ RSpec.describe "Books Index Page" do
     
     it "only shows records where the boolean column is `true`" do
       visit "/libraries/#{@library2.id}/books"
-
+      
       expect(page).to have_content(@xmas.name)
       expect(page).to have_no_content(@war.name)
+    end
+  end
+  
+  describe "library's books index page" do
+    it "has a form to put a number value" do
+      visit "/libraries/#{@library2.id}/books"
+
+      expect(page).to have_field(:search)
+    end
+    it "only returns and shows the records with more than that number" do
+      visit "/books"
+      visit "/libraries/#{@library2.id}/books"
+
+      fill_in :search, :with => 1000
+
+      click_on "Only return books with a number of pages greater than"
+
+      expect(current_path).to eq("/libraries/#{@library2.id}/books")
+
+      expect(page).to have_content(@war.name)
+      expect(page).to_not have_content(@xmas.name)
     end
   end
 end
