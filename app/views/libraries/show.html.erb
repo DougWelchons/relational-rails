@@ -1,0 +1,7 @@
+<h1><%= @library.name %></h1>
+
+<h2>located in <%= @library.city %></h2>
+
+<h3><%= link_to "Update Library", "/libraries/#{@library.id}/edit" %></h3>
+
+<h3><%= link_to "Delete Library", "/libraries/#{@library.id}", method: :delete %></h3>
