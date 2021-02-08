@@ -1,14 +1,15 @@
 class MembersController < ApplicationController
+  before_action :set_member, only: [:edit, :show]
 
   def index
-    @members = Member.all
-  end
-
-  def new
+    members = Member.all
+    @members = members.sort_by do |member|
+      member.created_at
+    end.reverse
   end
 
   def show
-    @member = Member.find(params[:id])
+    @orv_count = @member.orv_list.count
   end
 
   def create
@@ -23,10 +24,6 @@ class MembersController < ApplicationController
     redirect_to '/members'
   end
 
-  def edit
-    @member = Member.find(params[:id])
-  end
-
   def update
     member = Member.find(params[:id])
     member.update({
@@ -35,9 +32,9 @@ class MembersController < ApplicationController
       premium_member: status_check(params[:member][:premium_member])
       })
 
-      member.save
+    member.save
 
-      redirect_to "/members/#{member.id}"
+    redirect_to "/members/#{member.id}"
   end
 
   def destroy
@@ -45,11 +42,7 @@ class MembersController < ApplicationController
     redirect_to "/members"
   end
 
-  def status_check(info)
-    if info == nil
-      false
-    else
-      info
-    end
+  def set_member
+    @member = Member.find(params[:id])
   end
 end
