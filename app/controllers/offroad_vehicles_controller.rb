@@ -2,8 +2,8 @@ class OffroadVehiclesController < ApplicationController
   before_action :set_vehicle, only: [:edit, :show]
 
   def index
-    if params[:member_id]
-      @member = Member.find(params[:member_id])
+    if params[:id]
+      @member = Member.find(params[:id])
       @orv = @member.offroad_vehicles
     else
       orv = OffroadVehicle.all
