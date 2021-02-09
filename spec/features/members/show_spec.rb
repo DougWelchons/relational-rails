@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 # User story 2
-RSpec.describe 'as a visitor' do
+RSpec.describe 'Members show page' do
   describe "When I visit '/members/:id'" do
     it "should show the member and all of it's attributes" do
       member1 = Member.create!(name:"Doug", premium_member:true, skill_level:3)
