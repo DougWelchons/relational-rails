@@ -5,10 +5,4 @@
 <h4> Number of off-road vehicles registered = <%= @orv_count %></h4>
 <h4> Created at = <%= @member.created_at %></h4>
 <h4> Updated at = <%= @member.updated_at %></h4>
-<h4><a href="/members/<%=@member.id%>/edit">Update Member</a> | <a href="/members/<%=@member.id%>/destroy">Delete member</a> |
-  <form action="/offroad_vehicles" method="get">
-    <input type="hidden" name="authenticity_token" value="<$= form_authenticity_token %>"/>
-    <input type="hidden" name="member_id" value="<%= params[:id]%>"/>
-    <input type="submit"  value="Member Vehicle List">
-  </form>
-|<a href="/members">Home</a></h4>
+<h4><a href="/members/<%=@member.id%>/edit">Update Member</a> | <a href="/members/<%=@member.id%>/destroy">Delete member</a> | <a href="/members/<%=@member.id%>/offroad_vehicles">Offroad Vehicles</a> | <a href="/members">Home</a></h4>
