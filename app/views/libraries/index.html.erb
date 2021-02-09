@@ -5,7 +5,7 @@
     <p><% @libraries.each do |library| %>
       <section id = "library-<%= library.id %>">
       <li>
-      <h3><%= library.name %></h3>
+      <h3><%= link_to "#{library.name}", "/libraries/#{library.id}" %></h3>
       Created: <%= library.created_at.strftime("%A, %B %-d, %Y") %></li>
       <%= link_to "Edit Library", "/libraries/#{library.id}/edit"%>
       <%= link_to "Delete Library", "/libraries/#{library.id}", method: :delete %>

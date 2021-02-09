@@ -19,6 +19,16 @@ RSpec.describe "Library Index Page" do
       expect(page).to have_content(@library1.name)
       expect(page).to have_content(@library2.name)
     end
+
+    it "links to the show page from the name of the library" do
+      visit "/libraries"
+
+      within("#library-#{@library1.id}") do
+        expect(page).to have_link("#{@library1.name}")
+        click_on "#{@library1.name}"
+        expect(current_path).to eq("/libraries/#{@library1.id}")
+      end
+    end
     
     it "has a link to create a new library record" do
       visit "/libraries"

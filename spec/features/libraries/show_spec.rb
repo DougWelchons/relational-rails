@@ -59,6 +59,10 @@ RSpec.describe "as a visitor" do
       visit "libraries/#{@library1.id}"
 
       expect(page).to have_link("See #{@library1.name}'s Books")
+
+      click_on "See #{@library1.name}'s Books"
+      
+      expect(current_path).to eq("/libraries/#{@library1.id}/books")
     end
   end
 end
