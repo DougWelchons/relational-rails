@@ -65,6 +65,12 @@ RSpec.describe "Library Index Page" do
 
       expect(page).to have_link("All Books")
     end
+    
+    it "has it a link to All Libraries" do
+      visit "/libraries"
+
+      expect(page).to have_link("All Libraries")
+    end
 
     describe "Library's books index" do
       describe "as a visitor" do

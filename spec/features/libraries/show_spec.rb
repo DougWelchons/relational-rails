@@ -54,5 +54,11 @@ RSpec.describe "as a visitor" do
 
       expect(page).to have_content(@library1.number_of_books)
     end
+
+    it "has a link to the library's books page" do
+      visit "libraries/#{@library1.id}"
+
+      expect(page).to have_link("See #{@library1.name}'s Books")
+    end
   end
 end

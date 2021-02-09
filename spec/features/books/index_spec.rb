@@ -78,6 +78,12 @@ RSpec.describe "Books Index Page" do
 
       expect(page).to have_link("All Books")
     end
+
+    it "has it a link to All Libraries" do
+      visit "/books"
+
+      expect(page).to have_link("All Libraries")
+    end
   end
   
   describe "library's books index page" do
@@ -144,8 +150,14 @@ RSpec.describe "Books Index Page" do
 
     it "has a link to All Books" do
       visit "/libraries/#{@library1.id}/books"
-
+      
       expect(page).to have_link("All Books")
+    end
+    
+    it "has it a link to All Libraries" do
+      visit "/libraries/#{@library1.id}/books"
+
+      expect(page).to have_link("All Libraries")
     end
   end
 end
