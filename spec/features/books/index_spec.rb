@@ -70,8 +70,13 @@ RSpec.describe "Books Index Page" do
         click_on "Delete Book"
         expect(current_path).to eq("/books")
       end
-
+      
       expect(page).to_not have_content(@stand.name)
+    end
+    it "has a link to All Books" do
+      visit "/books"
+
+      expect(page).to have_link("All Books")
     end
   end
   
@@ -135,6 +140,12 @@ RSpec.describe "Books Index Page" do
       end
 
       expect(page).to_not have_content(@stand.name)
+    end
+
+    it "has a link to All Books" do
+      visit "/libraries/#{@library1.id}/books"
+
+      expect(page).to have_link("All Books")
     end
   end
 end
