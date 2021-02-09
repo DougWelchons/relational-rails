@@ -32,10 +32,20 @@ RSpec.describe "Library Index Page" do
     
     it "shows the libraries in order of most recently created with the creation time next to it" do
       visit "/libraries"
-
+      
       within('#ordered-libraries') do
         expect(@library3.name).to appear_before(@library2.name)
         expect(@library2.name).to appear_before(@library1.name)
+      end
+    end
+    
+    it "has a link to the edit library page" do
+      visit "/libraries"
+      
+      within("#library-#{@library1.id}") do
+        expect(page).to have_link("Edit Library")
+        click_on "Edit Library"
+        expect(current_path).to eq("/libraries/#{@library1.id}/edit")
       end
     end
     

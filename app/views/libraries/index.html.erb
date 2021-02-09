@@ -3,8 +3,12 @@
 <ul>
   <section id = "ordered-libraries" >
     <p><% @libraries.each do |library| %>
-      <li><%= library.name %>
+      <section id = "library-<%= library.id %>">
+      <li>
+      <h3><%= library.name %></h3>
       Created: <%= library.created_at.strftime("%A, %B %-d, %Y") %></li>
+      <%= link_to "Edit Library", "/libraries/#{library.id}/edit"%>
+      </section>
       <% end %>
     </p>
   </section>

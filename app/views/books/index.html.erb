@@ -35,8 +35,8 @@
     <%= submit_tag("Only return books with a number of pages greater than")%>
     <%= text_field_tag(:search, params[:search]) %>
 </section>
-  <%= link_to "Sort Alphabetically", "/books"%>
-  <%= link_to "Create Book", "/books" %>
+  <%= link_to "Sort Alphabetically", "/books/search/sort" %>
+  <%= link_to "Create Book", "/books/new" %>
 
 <% end %>
 </body>

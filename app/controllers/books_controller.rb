@@ -12,8 +12,8 @@ class BooksController < ApplicationController
     elsif params[:id]
       @library = Library.find(params[:id])
       @books = @library.books.search(params[:search])
-    elsif params[:seach]
-      @books = Book.search(params[:seach])
+    elsif params[:search]
+      @books = Book.search(params[:search])
     else
       @books = Book.available_books
     end

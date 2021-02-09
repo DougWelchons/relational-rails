@@ -31,8 +31,10 @@ RSpec.describe Book, type: :model do
         @war = @library2.books.create!(name: "War and Peace", available: false, pages: 1225)
   
         expected = [@stand, @war]
-  
+        expected2 = [@cat, @stand, @xmas]
+
         expect(Book.search(1000)).to eq(expected)
+        expect(Book.search(nil)).to eq(expected2)
       end
     end
 
