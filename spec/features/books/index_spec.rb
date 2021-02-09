@@ -51,6 +51,16 @@ RSpec.describe "Books Index Page" do
       expect(page).to have_content(@xmas.name)
       expect(page).to have_no_content(@war.name)
     end
+
+    it "has a link to edit the book" do
+      visit "/books"
+    
+      within("#book-#{@stand.id}") do
+        expect(page).to have_link("Edit Book")
+        click_on "Edit Book"
+        expect(current_path).to eq("/books/#{@stand.id}/edit")
+      end
+    end
   end
   
   describe "library's books index page" do
@@ -87,9 +97,19 @@ RSpec.describe "Books Index Page" do
         visit "/libraries/#{@library2.id}/books"
         
         click_on "Sort Alphabetically"
-
+        
         expect(@west.name).to appear_before(@xmas.name)
         expect(@xmas.name).to appear_before(@war.name)
+      end
+    end
+    
+    it "has a link to edit the book" do
+      visit "/libraries/#{@library1.id}/books"
+
+      within("#book-#{@stand.id}") do
+        expect(page).to have_link("Edit Book")
+        click_on "Edit Book"
+        expect(current_path).to eq("/books/#{@stand.id}/edit")
       end
     end
   end
