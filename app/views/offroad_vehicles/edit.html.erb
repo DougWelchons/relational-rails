@@ -11,5 +11,5 @@
   <input type="intiger" name="offroad_vehicles[tire_size]" value="<%=@vehicle.tire_size%>"/>
   <p> Passed safety inspection
   <input type="checkbox" name="offroad_vehicles[passed_safety_inspection]" <%= 'checked'if @vehicle.passed_safety_inspection == true %>/></p>
-  <input type="submit"/>
+  <input id="update_vehicle" type="submit"/>
 </form>
