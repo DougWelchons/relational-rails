@@ -48,6 +48,17 @@ RSpec.describe "Library Index Page" do
         expect(current_path).to eq("/libraries/#{@library1.id}/edit")
       end
     end
+
+    it "has a link to the delete library" do
+      visit "/libraries"
+      
+      within("#library-#{@library1.id}") do
+        expect(page).to have_link("Delete Library")
+        click_on "Delete Library"
+        expect(current_path).to eq("/libraries")
+      end
+      expect(page).to_not have_content(@library1.name)
+    end
     
     describe "Library's books index" do
       describe "as a visitor" do
@@ -75,7 +86,3 @@ RSpec.describe "Library Index Page" do
     end
   end
 end
-
-# When I visit the parent index,
-# I see that records are ordered by most recently created first
-# And next to each of the records I see when it was created

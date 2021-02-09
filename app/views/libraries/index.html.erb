@@ -8,6 +8,7 @@
       <h3><%= library.name %></h3>
       Created: <%= library.created_at.strftime("%A, %B %-d, %Y") %></li>
       <%= link_to "Edit Library", "/libraries/#{library.id}/edit"%>
+      <%= link_to "Delete Library", "/libraries/#{library.id}", method: :delete %>
       </section>
       <% end %>
     </p>
