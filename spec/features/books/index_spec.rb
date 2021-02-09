@@ -36,7 +36,7 @@ RSpec.describe "Books Index Page" do
         expect(page).to have_content(@xmas.library.name)
       end
         
-        
+      
       # within("#book-#{@war.id}") do
       #   expect(page).to have_content(@war.name)
       #   expect(page).to have_content(@war.available)
@@ -51,15 +51,27 @@ RSpec.describe "Books Index Page" do
       expect(page).to have_content(@xmas.name)
       expect(page).to have_no_content(@war.name)
     end
-
+    
     it "has a link to edit the book" do
       visit "/books"
-    
+      
       within("#book-#{@stand.id}") do
         expect(page).to have_link("Edit Book")
         click_on "Edit Book"
         expect(current_path).to eq("/books/#{@stand.id}/edit")
       end
+    end
+    
+    it "has a link to delete the book" do
+      visit "/books"
+
+      within("#book-#{@stand.id}") do
+        expect(page).to have_link("Delete Book")
+        click_on "Delete Book"
+        expect(current_path).to eq("/books")
+      end
+
+      expect(page).to_not have_content(@stand.name)
     end
   end
   
@@ -111,6 +123,18 @@ RSpec.describe "Books Index Page" do
         click_on "Edit Book"
         expect(current_path).to eq("/books/#{@stand.id}/edit")
       end
+    end
+    
+    it "has a link to delete the book" do 
+      visit "/libraries/#{@library1.id}/books"
+      
+      within("#book-#{@stand.id}") do
+        expect(page).to have_link("Delete Book")
+        click_on "Delete Book"
+        expect(current_path).to eq("/books")
+      end
+
+      expect(page).to_not have_content(@stand.name)
     end
   end
 end

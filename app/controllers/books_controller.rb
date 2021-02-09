@@ -47,6 +47,7 @@ class BooksController < ApplicationController
 
   def destroy
     Book.destroy(params[:id])
+    
     redirect_to "/books"
   end
   private

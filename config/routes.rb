@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get '/members', to: 'members#index'
   
   get '/libraries/new', to: 'libraries#new'
-  post '/libraries/new', to: 'libraries#create'
+  post '/libraries', to: 'libraries#create'
   get '/libraries', to: 'libraries#index'
   get '/libraries/:id', to: 'libraries#show'
   patch '/libraries/:id', to: 'libraries#update'

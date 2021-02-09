@@ -8,6 +8,7 @@
       <p> Number of pages: <%= book.pages %> </p>
       <p> Available: <%= book.available %></p>
       <%= link_to "Edit Book", "/books/#{book.id}/edit"%>
+      <%= link_to "Delete Book", "/books/#{book.id}", method: :delete%>
     </section>
   <% end %>
 <section id="search">
@@ -28,6 +29,7 @@
     <p> Number of pages: <%= book.pages %> </p>
     <p> Available: <%= book.available %></p>
     <%= link_to "Edit Book", "/books/#{book.id}/edit"%>
+    <%= link_to "Delete Book", "/books/#{book.id}", method: :delete%>
   </section>
 <% end %>
 
