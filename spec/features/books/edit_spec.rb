@@ -34,7 +34,7 @@ RSpec.describe "Books editing Page" do
   describe "When fill in the form and click the Update button" do
     it "redirects me to the book's Show page where I see the books's updated information" do
       visit "/books/#{@cat.id}/edit"
-
+      
       fill_in :name, :with => "Green Eggs and Ham"
       fill_in :pages, :with => 62
       fill_in :available, :with => false

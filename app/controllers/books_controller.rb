@@ -2,7 +2,14 @@ class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update]
 
   def index
-    if params[:id]
+    if params[:sort]
+      if params[:id]
+        @library = Library.find(params[:id])
+        @books = @library.books.alphabetical
+      else
+        @books = Book.alphabetical
+      end
+    elsif params[:id]
       @library = Library.find(params[:id])
       @books = @library.books.search(params[:search])
     elsif params[:seach]

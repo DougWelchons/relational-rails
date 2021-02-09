@@ -9,6 +9,7 @@ RSpec.describe "Books Index Page" do
     @stand = @library1.books.create!(name: "The Stand", available: true, pages: 1308)
     @xmas = @library2.books.create!(name: "Christmas Carol", available: true, pages: 66)
     @war = @library2.books.create!(name: "War and Peace", available: false, pages: 1225)
+    @west = @library2.books.create!(name: "All Quiet on the Western Front", available: true, pages: 200)
   end
   describe "as a vistor" do
     it "shows all the books in the system and their attributes" do
@@ -59,17 +60,37 @@ RSpec.describe "Books Index Page" do
       expect(page).to have_field(:search)
     end
     it "only returns and shows the records with more than that number" do
-      visit "/books"
       visit "/libraries/#{@library2.id}/books"
-
+      
       fill_in :search, :with => 1000
-
+      
       click_on "Only return books with a number of pages greater than"
-
+      
       expect(current_path).to eq("/libraries/#{@library2.id}/books")
-
+      
       expect(page).to have_content(@war.name)
       expect(page).to_not have_content(@xmas.name)
+    end
+
+    it "has a link to sort books in alphabetical order" do
+      visit "/libraries/#{@library2.id}/books"
+      
+      expect(page).to have_link("Sort Alphabetically")
+      
+      click_on "Sort Alphabetically"
+      
+      expect(current_path).to eq("/libraries/#{@library2.id}/books/sort")
+    end
+    
+    describe "When I click on the link" do
+      it "takes me back to the index page with books in alphabetical order" do
+        visit "/libraries/#{@library2.id}/books"
+        
+        click_on "Sort Alphabetically"
+
+        expect(@west.name).to appear_before(@xmas.name)
+        expect(@xmas.name).to appear_before(@war.name)
+      end
     end
   end
 end

@@ -12,4 +12,8 @@ class Book < ApplicationRecord
       available_books
     end
   end
+
+  def self.alphabetical
+    order(name: :asc)
+  end
 end
