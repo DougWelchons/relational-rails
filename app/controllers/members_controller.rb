@@ -9,7 +9,6 @@ class MembersController < ApplicationController
   end
 
   def show
-    # binding.pry
     @orv_count = @member.orv_list.count
   end
 
@@ -26,17 +25,13 @@ class MembersController < ApplicationController
   end
 
   def update
-    # member = Member.find(params[:id])
     @member.update({
       name: params[:name],
       skill_level: params[:skill_level],
       premium_member: status_check(params[:premium_member])
       })
 
-    respond_to do |format|
-      format.html {redirect_to "/members/#{@member.id}"}
-    end
-    # redirect_to "/members/#{@member.id}"
+    redirect_to "/members/#{@member.id}"
   end
 
   def destroy

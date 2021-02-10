@@ -1,7 +1,7 @@
 <% if @member != nil %>
 
 <h1> <%=@member.name%>'s Off-road Vehicles list </h1>
-<%= link_to "Add a new vehicle", "/members/#{@member.id}/new_orv" %>
+<h4><%= link_to "Add a new vehicle", "/members/#{@member.id}/new_orv" %> | <%= link_to "Back to Member page", "/members/#{@member.id}" %></h4>
 
 <%= form_with url: "/members/#{@member.id}/offroad_vehicles", method: :get, local: true do |form| %>
   <%= form.submit "find all vehicles with a tire size grater then:" %>

@@ -3,4 +3,4 @@
 <h3>Member ID#<%= @vehicle.member_id%></h3>
 <h3>Tire size <%= @vehicle.tire_size%> inches</h3>
 <h3> Passed safety inspection <%= @vehicle.passed_safety_inspection %></h3>
-<h3><a href="/offroad_vehicles/<%=@vehicle.id%>/edit">Update Vehicle</a> | <a href="/offroad_vehicles/<%=@vehicle.id%>/destroy">Delete Vehicle</a> | <a href="/members/<%= @vehicle.member_id%>">Back</a></h3>
+<h3><%= link_to "Update Vehicle", "/offroad_vehicles/#{@vehicle.id}/edit" %> | <%= link_to "Delete Vehicle", "/offroad_vehicles/#{@vehicle.id}/destroy" %> | <%= link_to "Back to Vehicle List", :back %> | <%= link_to "See Member page", "/members/#{@vehicle.member_id}" %></h3>
