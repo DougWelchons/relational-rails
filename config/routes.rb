@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   post '/members', to: 'members#create'
   get '/members/:id/edit', to: 'members#edit'
   patch 'members/:id', to: 'members#update'
-  get '/members/:id/destroy', to: 'members#destroy'
+  delete '/members/:id', to: 'members#destroy'
   get 'members/:id/offroad_vehicles', to: 'offroad_vehicles#index'
   get '/members/:id/new_orv', to: 'offroad_vehicles#new'
 
