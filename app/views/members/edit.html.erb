@@ -1,11 +1,9 @@
-<form action="/members/<%=@member.id%>" method="post">
-  <input type="hidden" name="authenticity_token" value="<$= form_authenticity_token %>"/>
-  <input type="hidden" name="_method" value="PATCH" />
-  <p> Name </p>
-  <input type="text" name="member[name]" value="<%= @member.name %>"/>
-  <p> skill_level </p>
-  <input type="integer" name="member[skill_level]" value="<%= @member.skill_level %>"/>
-  <p> Premium membership?
-  <input type="checkbox" name="member[premium_member]" <%= 'checked'if @member.premium_member == true %>/></p>
-  <input id="update_member" type="submit"/>
-</form>
+<%= form_with url: "/members/#{@member.id}", method: :patch, local: true do |form| %>
+  <h3><%= form.label :name %>
+  <%= form.text_field :name, value: @member.name %></h3>
+  <h3><%= form.label :skill_level %>
+  <%= form.number_field :skill_level, value: @member.skill_level %></h3>
+  <h3><%= form.label :premium_member %>
+  <%= form.check_box :premium_member, {checked: @member.premium_member}%></h3>
+  <%= form.submit 'Update Member' %>
+<% end %>

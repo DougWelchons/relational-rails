@@ -22,8 +22,10 @@ class OffroadVehiclesController < ApplicationController
   end
 
   def destroy
+    vehicle = OffroadVehicle.find(params[:id])
+    member_id = vehicle.member.id
     OffroadVehicle.destroy(params[:id])
-    redirect_to '/offroad_vehicles'
+    redirect_to "/members/#{member_id}/offroad_vehicles"
   end
 
   def update

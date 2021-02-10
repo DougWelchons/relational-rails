@@ -9,7 +9,6 @@ Rails.application.routes.draw do
   delete '/libraries/:id', to: 'libraries#delete'
   get '/libraries/:id/edit', to: 'libraries#edit'
 
-
   get '/members', to: 'members#index'
   get '/members/new', to: 'members#new'
   get '/members/:id', to: 'members#show'
