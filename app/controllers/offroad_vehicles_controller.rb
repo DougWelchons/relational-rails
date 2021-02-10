@@ -2,8 +2,8 @@ class OffroadVehiclesController < ApplicationController
   before_action :set_vehicle, only: [:edit, :show]
 
   def index
-    if params[:member_id]
-      @member = Member.find(params[:member_id])
+    if params[:id]
+      @member = Member.find(params[:id])
       @orv = @member.offroad_vehicles
     else
       orv = OffroadVehicle.all
@@ -22,8 +22,10 @@ class OffroadVehiclesController < ApplicationController
   end
 
   def destroy
+    vehicle = OffroadVehicle.find(params[:id])
+    member_id = vehicle.member.id
     OffroadVehicle.destroy(params[:id])
-    redirect_to '/offroad_vehicles'
+    redirect_to "/members/#{member_id}/offroad_vehicles"
   end
 
   def update

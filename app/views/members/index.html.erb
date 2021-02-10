@@ -1,8 +1,8 @@
 <h1> Members List </h1>
 
-<a href='/members/new'> New member sign-up</a>
+<%= link_to "New member sign-up", "/members/new" %>
 
 <% @members.each do |member| %>
-  <h2><a href="/members/<%=member.id%>"><%= member.name %></a></h2>
+  <h2><%= link_to "#{member.name}", "/members/#{member.id}" %></h2>
   <p> created at:<%= member.created_at %></p>
 <% end %>
