@@ -17,7 +17,7 @@ RSpec.describe "Offroad_vehicles edit page" do
     end
   end
 
-  describe "when I visit offroad_vehicles/:id/edit" do
+  describe "when I visit an offroad_vehicles edit page" do
     it "shows a form populated with the vehicles info" do
       member = Member.create!(name:"Doug", premium_member:true, skill_level:3)
 

@@ -16,18 +16,18 @@ RSpec.describe 'As a visiter' do
 
       visit '/members/new'
 
-      expect(page).to have_field(name: "member[name]")
-      expect(page).to have_field(name: "member[skill_level]")
-      expect(page).to have_field(name: "member[premium_member]")
+      expect(page).to have_field(name: "name")
+      expect(page).to have_field(name: "skill_level")
+      expect(page).to have_field(name: "premium_member")
     end
 
     it "redirects me to the members index when I submit the form" do
       visit '/members/new'
 
-      fill_in "member[name]", with: "John"
-      fill_in "member[skill_level]", with: 3
-      check "member[premium_member]"
-      click_button "create_member"
+      fill_in "name", with: "John"
+      fill_in "skill_level", with: 3
+      check "premium_member"
+      click_button "Create Member"
       expect(current_path).to eq("/members")
 
       expect(page).to have_content("John")

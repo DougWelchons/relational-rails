@@ -22,17 +22,17 @@ RSpec.describe "member edit page" do
 
       visit "/members/#{member.id}/edit"
 
-      expect(find_field(name: "member[name]").value).to eq(member.name)
-      expect(find_field(name: "member[skill_level]").value.to_i).to eq(member.skill_level)
-      expect(find_field(name: "member[premium_member]").value).to eq("on") #revisit this test line
+      expect(find_field(name: "name").value).to eq(member.name)
+      expect(find_field(name: "skill_level").value.to_i).to eq(member.skill_level)
+      expect(find_field(name: "premium_member").value).to eq("1") #revisit this test line
     end
 
     it "should redirect me to the member show page when the form is submitted" do
       member = Member.create!(name:"Doug", premium_member:true, skill_level:3)
 
       visit "/members/#{member.id}/edit"
-      fill_in "member[skill_level]", with: 4
-      click_button "update_member"
+      fill_in "skill_level", with: 4
+      click_button "Update Member"
 
       expect(current_path).to eq("/members/#{member.id}")
       expect(page).to have_content(member.name)
