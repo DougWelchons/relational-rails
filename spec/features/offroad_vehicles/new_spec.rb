@@ -18,11 +18,11 @@ RSpec.describe 'members/:id/offroad_vehicles/new page' do
 
       visit "/members/#{member.id}/new_orv"
 
-      expect(page).to have_field(name: "offroad_vehicles[name]")
-      expect(page).to have_field(name: "offroad_vehicles[make]")
-      expect(page).to have_field(name: "offroad_vehicles[model]")
-      expect(page).to have_field(name: "offroad_vehicles[tire_size]")
-      expect(page).to have_field(name: "offroad_vehicles[passed_safety_inspection]")
+      expect(page).to have_field(name: "name")
+      expect(page).to have_field(name: "make")
+      expect(page).to have_field(name: "model")
+      expect(page).to have_field(name: "tire_size")
+      expect(page).to have_field(name: "passed_safety_inspection")
     end
 
     it "redirects me to the ORV index when I submit the form" do
@@ -30,12 +30,12 @@ RSpec.describe 'members/:id/offroad_vehicles/new page' do
 
       visit "/members/#{member.id}/new_orv"
 
-      fill_in "offroad_vehicles[name]", with: "BigBoi"
-      fill_in "offroad_vehicles[make]", with: "Jeep"
-      fill_in "offroad_vehicles[model]", with: "something"
-      fill_in "offroad_vehicles[tire_size]", with: 37
-      check "offroad_vehicles[passed_safety_inspection]"
-      click_button "create_vehicle"
+      fill_in "name", with: "BigBoi"
+      fill_in "make", with: "Jeep"
+      fill_in "model", with: "something"
+      fill_in "tire_size", with: 37
+      check "passed_safety_inspection"
+      click_button "Create Vehicle"
       expect(current_path).to eq("/offroad_vehicles/#{member.offroad_vehicles.first.id}")
 
       expect(page).to have_content("BigBoi")

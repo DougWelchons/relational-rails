@@ -35,7 +35,7 @@ Rails.application.routes.draw do
   get '/offroad_vehicles', to: 'offroad_vehicles#index'
   get '/offroad_vehicles/:id', to: 'offroad_vehicles#show'
   get '/offroad_vehicles/:id/edit', to: 'offroad_vehicles#edit'
-  get '/offroad_vehicles/:id/destroy', to: 'offroad_vehicles#destroy'
+  delete '/offroad_vehicles/:id/', to: 'offroad_vehicles#destroy'
   patch '/offroad_vehicles/:id', to: 'offroad_vehicles#update'
   post '/offroad_vehicles', to: 'offroad_vehicles#create'
 end

@@ -22,20 +22,20 @@ RSpec.describe "as a visitor" do
 
     it "has a link to update library that takes me to the edit page" do
       visit "libraries/#{@library1.id}"
-      
+
       expect(page).to have_link("Update Library")
-      
+
       click_on "Update Library"
       expect(current_path).to eq("/libraries/#{@library1.id}/edit")
     end
-    
+
     it "has a link to delete the parent" do
       visit "libraries/#{@library1.id}"
-      
+
       expect(page).to have_link("Delete Library")
-      
+
       click_on "Delete Library"
-      
+
       expect(current_path).to eq("/libraries")
     end
     it "deletes the Library and all its books" do
