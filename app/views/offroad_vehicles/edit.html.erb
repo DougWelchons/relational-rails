@@ -1,0 +1,15 @@
+<form action="/offroad_vehicles/<%=@vehicle.id%>" method="post">
+  <input type="hidden" name="authenticity_token" value="<$= form_authenticity_token %>"/>
+  <input type="hidden" name="_method" value="PATCH" />
+  <p> Name </p>
+  <input type="text" name="offroad_vehicles[name]" value="<%=@vehicle.name%>"/>
+  <p>Make</p>
+  <input type="text" name="offroad_vehicles[make]" value="<%=@vehicle.make%>"/>
+  <p>Model</p>
+  <input type="text" name="offroad_vehicles[model]" value="<%=@vehicle.model%>"/>
+  <p>Tire Size</p>
+  <input type="intiger" name="offroad_vehicles[tire_size]" value="<%=@vehicle.tire_size%>"/>
+  <p> Passed safety inspection
+  <input type="checkbox" name="offroad_vehicles[passed_safety_inspection]" <%= 'checked'if @vehicle.passed_safety_inspection == true %>/></p>
+  <input id="update_vehicle" type="submit"/>
+</form>

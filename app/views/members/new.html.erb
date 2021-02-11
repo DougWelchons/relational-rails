@@ -1,0 +1,9 @@
+<%= form_with url: "/members", method: :post, local: true do |form|%>
+  <h3><%= form.label :name %>
+  <%= form.text_field :name %></h3>
+  <h3><%= form.label :skill_level %>
+  <%= form.number_field :skill_level %></h3>
+  <h3><%= form.label :premium_member %>
+  <%= form.check_box :premium_member %></h3>
+  <%= form.submit 'Create Member' %>
+<% end %>
