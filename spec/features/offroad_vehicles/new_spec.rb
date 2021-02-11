@@ -34,7 +34,6 @@ RSpec.describe 'members/:id/offroad_vehicles/new page' do
       fill_in "make", with: "Jeep"
       fill_in "model", with: "something"
       fill_in "tire_size", with: 37
-      # check "passed_safety_inspection"
       click_button "Create Vehicle"
       expect(current_path).to eq("/offroad_vehicles/#{member.offroad_vehicles.first.id}")
 
