@@ -15,6 +15,12 @@
 
 <% else %>
 <h1> Off-road Vehicles list </h1>
+
+<%= form_with url: "/offroad_vehicles", method: :get, local: true do |form| %>
+  <h5><%= form.submit "Search Records" %>
+  <%= form.text_field :search %></h5>
+<% end %>
+
 <% end %>
 
 <% @orv.each do |vehicle| %>

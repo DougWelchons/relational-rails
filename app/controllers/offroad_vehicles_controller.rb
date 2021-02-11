@@ -9,6 +9,9 @@ class OffroadVehiclesController < ApplicationController
     if params[:id]
       @member = Member.find(params[:id])
       @orv = @member.orv_list(tire_size: params[:select_tire_size], sort: params[:alphabetical])
+    elsif params[:search]
+      keyword = "%#{params[:search]}%"
+      @orv = OffroadVehicle.where("name LIKE ?", keyword)
     else
       @orv = OffroadVehicle.where(passed_safety_inspection: true)
     end

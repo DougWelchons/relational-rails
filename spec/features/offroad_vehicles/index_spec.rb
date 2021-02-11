@@ -19,6 +19,26 @@ RSpec.describe "ORV index page" do
       expect(page).to have_content("Ford, F-250")
       expect(page).to_not have_content("Dragon-Alligator")
     end
+
+    it "Should have a search field" do
+      member1 = Member.create!(name:"Doug", premium_member:true, skill_level:3)
+      member2 = Member.create!(name:"John", premium_member:false, skill_level:2)
+
+      vehicle1 = member1.offroad_vehicles.create!(name: "Black Sheep", make: "Jeep", model: "Wrangler", tire_size: 33, passed_safety_inspection: true)
+      vehicle2 = member1.offroad_vehicles.create!(name: "Dragon-Alligator", make: "Jeep", model: "Gladiator", tire_size: 37, passed_safety_inspection: false)
+      vehicle3 = member2.offroad_vehicles.create!(name: "BigBlank", make: "Ford", model: "F-250", tire_size: 37, passed_safety_inspection: true)
+
+      visit "/offroad_vehicles"
+
+      expect(page).to have_field("search")
+
+      fill_in "search", with: "Bl"
+      click_button"Search Records"
+
+      expect(page).to have_content(vehicle1.name)
+      expect(page).to have_content(vehicle3.name)
+      expect(page).to_not have_content(vehicle2.name)
+    end
   end
 
   describe "when I visit a members offroad vehicles page" do
