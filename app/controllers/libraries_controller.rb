@@ -1,11 +1,15 @@
 class LibrariesController < ApplicationController
+  before_action :set_library, only: [:show, :edit, :update, :index_books]
 
   def index
-    @libraries = Library.all
+    if params[:sort]
+      @libraries = Library.by_number_of_books
+    end
+    @libraries = Library.recent_libraries
   end
 
   def show
-    @library = Library.find(params[:id])
+    @library
   end
 
   def new
@@ -22,20 +26,34 @@ class LibrariesController < ApplicationController
   end
 
   def edit
-    @library = Library.find(params[:id])
+    @library
   end
 
   def update
-    @library = Library.find(params[:id])
-    @library = Library.update({name: params[:name],
-                               city: params[:city]
-                               })
-      
+    @library
+
+    if params[:open]
+      @library = Library.update(open: true)
+    else
+      @library = Library.update(open: false)
+    end
+    
+    @library = Library.update(library_params)
+    
     redirect_to "/libraries/#{params[:id]}"
   end
 
-  def delete
+  def destroy
     Library.destroy(params[:id])
     redirect_to "/libraries"
+  end
+  
+  private
+  def set_library
+    @library = Library.find(params[:id])
+  end
+
+  def library_params
+    params.permit(:name, :city, :years_open, :open)
   end
 end
