@@ -2,6 +2,9 @@ class LibrariesController < ApplicationController
   before_action :set_library, only: [:show, :edit, :update, :index_books]
 
   def index
+    if params[:sort]
+      @libraries = Library.by_number_of_books
+    end
     @libraries = Library.recent_libraries
   end
 
@@ -44,11 +47,7 @@ class LibrariesController < ApplicationController
     Library.destroy(params[:id])
     redirect_to "/libraries"
   end
-
-  def index_books
-    @library
-  end
-
+  
   private
   def set_library
     @library = Library.find(params[:id])

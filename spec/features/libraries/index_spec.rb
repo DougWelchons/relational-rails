@@ -19,10 +19,10 @@ RSpec.describe "Library Index Page" do
       expect(page).to have_content(@library1.name)
       expect(page).to have_content(@library2.name)
     end
-
+    
     it "links to the show page from the name of the library" do
       visit "/libraries"
-
+      
       within("#library-#{@library1.id}") do
         expect(page).to have_link("#{@library1.name}")
         click_on "#{@library1.name}"
@@ -58,7 +58,7 @@ RSpec.describe "Library Index Page" do
         expect(current_path).to eq("/libraries/#{@library1.id}/edit")
       end
     end
-
+    
     it "has a link to the delete library" do
       visit "/libraries"
       
@@ -72,16 +72,29 @@ RSpec.describe "Library Index Page" do
     
     it "has it a link to All Books" do
       visit "/libraries"
-
+      
       expect(page).to have_link("All Books")
     end
     
     it "has it a link to All Libraries" do
       visit "/libraries"
-
+      
       expect(page).to have_link("All Libraries")
     end
-
+    
+    # it "has a link to sort the libraries by number of books" do
+    #   tale = @library2.books.create!(name: "A Tale of Two Cities", available: true, pages: 448)
+    #   clown = @library3.books.create!(name: "IT", available: true, pages: 1138)
+    #   visit "/libraries"
+      
+    #   expect(page).to have_link("Sort by number of books")
+      
+    #   click_on "Sort by number of books"
+    #   save_and_open_page
+    #   expect(@library2.name).to appear_before(@library1.name)
+    #   expect(@library1.name).to appear_before(@library3.name)
+    # end
+    
     describe "Library's books index" do
       describe "as a visitor" do
         it "shows all of the books and its attributes for the library" do

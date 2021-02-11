@@ -17,6 +17,26 @@ RSpec.describe Library, type: :model do
         expect(Library.recent_libraries).to eq(expected)
       end
     end
+
+    describe "::by_number_of_books" do
+      it "lists libraries by most most books " do
+        @library1 = Library.create!(name: "Lafayette Library", city: "Lafayette", years_open: 20, open: true)
+        @library2 = Library.create!(name: "Broomfield Library", city: "Broomfield", years_open: 20, open: true)
+        @library3 = Library.create!(name: "Denver Library", city: "Denver", years_open: 20, open: true)
+        @library4 = Library.create!(name: "Aspen Library", city: "Aspen", years_open: 20, open: true)
+        
+        @cat = @library1.books.create!(name: "Cat in the Hat", available: true, pages: 61)
+        @stand = @library1.books.create!(name: "The Stand", available: true, pages: 1308)
+        @xmas = @library2.books.create!(name: "Christmas Carol", available: true, pages: 66)
+        @war = @library2.books.create!(name: "War and Peace", available: false, pages: 1225)
+        @tale = @library2.books.create!(name: "A Tale of Two Cities", available: true, pages: 448)
+        @clown = @library3.books.create!(name: "IT", available: true, pages: 1138)
+    
+        expected = [@library2, @library1, @library3]
+        
+        expect(Library.by_number_of_books).to eq(expected)
+      end
+    end
   end
 
   describe "Instance Methods" do
