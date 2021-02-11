@@ -1,0 +1,11 @@
+<h1>Update <%= @book.name %></h1>
+
+<%= form_with url: "/books/#{@book.id}", method: :patch do |f|%>
+  <%= f.label :name %>
+  <%= f.text_field :name, :value => @book.name %>
+  <%= f.label :pages %>
+  <%= f.text_field :pages, :value => @book.pages  %>
+  <%= f.label :available %>
+  <%= f.text_field :available, :value => @book.available %>  %>
+<%= submit_tag 'Update Book' %>
+<% end %>

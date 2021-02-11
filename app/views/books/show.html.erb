@@ -1,0 +1,7 @@
+<h1><%= @book.name %></h1>
+
+<h4>Available: <%= @book.available %></h4>
+<p>Pages: <%= @book.pages %></p>
+
+<%= link_to "Update Book", "/books/#{@book.id}/edit" %>
+<%= link_to "Delete Book", "/books/#{@book.id}/", method: :delete %>

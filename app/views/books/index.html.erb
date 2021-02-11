@@ -1,0 +1,46 @@
+<% if @library %>
+
+<body id="book-list">
+  <h1><%= @library.name %>'s Books:</h1>
+  <% @books.each do |book| %>
+    <section id="book-<%=book.id%>">
+      <h3> <%= book.name %> </h3>
+      <p> Number of pages: <%= book.pages %> </p>
+      <p> Available: <%= book.available %></p>
+      <%= link_to "Edit Book", "/books/#{book.id}/edit"%>
+      <%= link_to "Delete Book", "/books/#{book.id}", method: :delete%>
+    </section>
+  <% end %>
+<section id="search">
+  <h3>Search for books by number of pages</h3>
+  <%= form_with url: "/libraries/#{@library.id}/books", method: :get, local: :true %>
+    <%= submit_tag("Only return books with a number of pages greater than")%>
+    <%= text_field_tag(:search, params[:search]) %>
+</section>
+  <%= link_to "Create Book", "/libraries/#{@library.id}/books/new" %>
+  <%= link_to "Sort Alphabetically", "/libraries/#{@library.id}/books/sort" %>
+
+
+<% else %>
+  <h1>All Books:</h1>
+<% @books.each do |book| %>
+  <section id="book-<%=book.id%>">
+    <h3> <%= book.name %> At <%= book.library.name %></h3>
+    <p> Number of pages: <%= book.pages %> </p>
+    <p> Available: <%= book.available %></p>
+    <%= link_to "Edit Book", "/books/#{book.id}/edit"%>
+    <%= link_to "Delete Book", "/books/#{book.id}", method: :delete%>
+  </section>
+<% end %>
+
+<section id="search">
+  <h3>Search for books by number of pages</h3>
+  <%= form_with url: "/books", method: :get, local: :true %>
+    <%= submit_tag("Only return books with a number of pages greater than")%>
+    <%= text_field_tag(:search, params[:search]) %>
+</section>
+  <%= link_to "Sort Alphabetically", "/books/search/sort" %>
+
+<% end %>
+</body>
+
