@@ -2,6 +2,11 @@
 
 <%= link_to "New member sign-up", "/members/new" %>
 
+<%= form_with url: "/members", method: :get, local: true do |form| %>
+  <h5><%= form.submit "Search Records" %>
+  <%= form.text_field :search %></h5>
+<% end %>
+
 <% @members.each do |member| %>
   <h2><%= link_to "#{member.name}", "/members/#{member.id}" %></h2>
   <h4><%= link_to "edit", "/members/#{member.id}/edit", id: "edit_id_#{member.id}" %> | <%= link_to "Delete", "/members/#{member.id}", method: :delete, id: "delete_id_#{member.id}" %></h4>

@@ -2,7 +2,12 @@ class MembersController < ApplicationController
   before_action :set_member, only: [:edit, :show, :update]
 
   def index
-    @members = Member.order(created_at: :desc)
+    if params[:search]
+      keyword = "%#{params[:search]}%"
+      @members = Member.where("name LIKE ?", keyword)
+    else
+      @members = Member.order(created_at: :desc)
+    end
   end
 
   def show
