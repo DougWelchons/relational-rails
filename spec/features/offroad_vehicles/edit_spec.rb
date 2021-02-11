@@ -6,7 +6,7 @@ RSpec.describe "Offroad_vehicles edit page" do
     it "has a link to to update the vehicle" do
       member = Member.create!(name:"Doug", premium_member:true, skill_level:3)
 
-      vehicle = member.offroad_vehicles.create!(name: "Black Sheep", make: "Jeep", model: "Wrangler", tire_size: 33, passed_safety_inspection: true)
+      vehicle = member.offroad_vehicles.create!(name: "Black Sheep", make: "Jeep", model: "Wrangler", tire_size: 33, passed_safety_inspection: false)
 
       visit "/offroad_vehicles/#{vehicle.id}"
 
