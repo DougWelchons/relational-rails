@@ -39,5 +39,20 @@ RSpec.describe "as a visitor" do
 
       expect(find_link("delete_id_#{member2.id}")).to appear_before(find_link("delete_id_#{member1.id}"))
     end
+
+    it "Should have a search field" do
+      member1 = Member.create!(name:"Doug", premium_member:true, skill_level:3)
+      member2 = Member.create!(name:"Sam", premium_member:false, skill_level:5)
+
+      visit "/members"
+
+      expect(page).to have_field("search")
+
+      fill_in "search", with: "am"
+      click_button"Search Records"
+
+      expect(page).to have_content(member2.name)
+      expect(page).to_not have_content(member1.name)
+    end
   end
 end
