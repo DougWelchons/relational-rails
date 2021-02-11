@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
 
   def status_check(info)
-    if info == "0" || info == nil
+    if info == "0"
       false
     else
       true

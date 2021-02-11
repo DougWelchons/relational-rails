@@ -4,5 +4,6 @@
 
 <% @members.each do |member| %>
   <h2><%= link_to "#{member.name}", "/members/#{member.id}" %></h2>
+  <h4><%= link_to "edit", "/members/#{member.id}/edit", id: "edit_id_#{member.id}" %> | <%= link_to "Delete", "/members/#{member.id}", method: :delete, id: "delete_id_#{member.id}" %></h4>
   <p> created at:<%= member.created_at %></p>
 <% end %>

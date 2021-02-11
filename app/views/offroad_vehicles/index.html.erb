@@ -8,6 +8,11 @@
   <%= form.number_field :select_tire_size %>
 <% end %>
 
+<%= form_with url: "", method: :get, local: true do |form| %>
+  <%= form.hidden_field :alphabetical, value: true %>
+  <%= form.submit "Sort Alphabeticaly" %>
+<% end %>
+
 <% else %>
 <h1> Off-road Vehicles list </h1>
 <% end %>
@@ -18,4 +23,5 @@
   <h3>Member ID#<%= vehicle.member_id%></h3>
   <h3>Tire size <%= vehicle.tire_size%> inches</h3>
   <h3>Passed safety inspection = <%= vehicle.passed_safety_inspection %></h3>
+  <h3><%= link_to "Edit", "/offroad_vehicles/#{vehicle.id}/edit", id: "edit_id_#{vehicle.id}" %> | <%= link_to "Delete", "/offroad_vehicles/#{vehicle.id}", method: :delete, id: "delete_id_#{vehicle.id}" %></h3>
 <% end %>

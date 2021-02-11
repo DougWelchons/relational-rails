@@ -8,7 +8,7 @@ class OffroadVehiclesController < ApplicationController
   def index
     if params[:id]
       @member = Member.find(params[:id])
-      @orv = @member.orv_list(params[:select_tire_size])
+      @orv = @member.orv_list(tire_size: params[:select_tire_size], sort: params[:alphabetical])
     else
       @orv = OffroadVehicle.where(passed_safety_inspection: true)
     end

@@ -5,4 +5,4 @@
 <h4> Number of off-road vehicles registered = <%= @orv_count %></h4>
 <h4> Created at = <%= @member.created_at %></h4>
 <h4> Updated at = <%= @member.updated_at %></h4>
-<h4><%= link_to "Update Member", "/members/#{@member.id}/edit" %> | <%= link_to "Delete Member", "/members/#{@member.id}", method: :delete %> | <%= link_to "Vehicle List", "/members/#{@member.id}/offroad_vehicles"%> | <%= link_to "Members index page", "/members" %></h4>
+<h4><%= link_to "Update Member", "/members/#{@member.id}/edit" %> | <%= link_to "Delete Member", "/members/#{@member.id}", method: :delete %> | <%= link_to "Vehicle List", "/members/#{@member.id}/offroad_vehicles"%></h4>

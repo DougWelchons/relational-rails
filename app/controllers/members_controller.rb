@@ -2,10 +2,7 @@ class MembersController < ApplicationController
   before_action :set_member, only: [:edit, :show, :update]
 
   def index
-    members = Member.all
-    @members = members.sort_by do |member|
-      member.created_at
-    end.reverse
+    @members = Member.order(created_at: :desc)
   end
 
   def show
